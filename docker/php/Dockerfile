@@ -1,6 +1,6 @@
 FROM ubuntu:bionic-20190307
 
-RUN apt update
+RUN apt-get update
 RUN apt -y upgrade
 
 RUN apt install -y software-properties-common

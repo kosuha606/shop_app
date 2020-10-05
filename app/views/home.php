@@ -1,21 +1,32 @@
 <?php
 
+/** @var $products */
+
 ?>
 <div>
-    <h2>Панель управления</h2>
+    <h2>Магазин</h2>
     <div class="form-row">
-        <button class="btn">Сгенерировать данные</button>
+        <button @click="generateProducts" class="btn">Сгенерировать товары</button>
     </div>
     <hr>
-
-    <current-order></current-order>
-    <div class="form-row">
-        <button class="btn">Оплатить заказ</button>
+    Id товаров нового заказа: {{ Object.keys(productIdsForOrder) }}
+    <div v-if="Object.keys(productIdsForOrder).length > 0">
+        <button class="btn" @click="createNewOrder">Создать заказ</button>
     </div>
+    <template v-if="order.total">
+        <hr>
+        <b>Оформление заказа</b>
+        <div class="form-row">
+            <div>
+                К оплате: {{ order.total }} руб.
+            </div>
+            <button class="btn" @click="payCurrentOrder">Оплатить заказ</button>
+        </div>
+    </template>
 </div>
 
 <hr>
 
 <div>
-    {{ hello }}
+    <product-item :product="product" v-for="product in products"></product-item>
 </div>

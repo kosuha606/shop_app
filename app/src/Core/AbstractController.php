@@ -10,6 +10,8 @@ abstract class AbstractController
 {
     protected $layout = 'layouts/main.php';
 
+    protected $jsVars = [];
+
     /**
      * @var ApplicationInterface
      */

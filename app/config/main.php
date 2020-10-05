@@ -7,6 +7,8 @@ use App\Controller\ErrorController;
 use App\Controller\HomeController;
 use App\Core\DataManager;
 use App\Service\OrderService;
+use App\Service\ProductService;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Главный файл конфигурации приложения
@@ -18,7 +20,6 @@ return [
     'errorRoute' => [ErrorController::class, 'errorAction'],
     'routes'    => [
         '/'                   => [HomeController::class, 'homeAction', ['GET']],
-        '/api/catalog'        => [ProductController::class, 'catalogAction', ['GET']],
         '/api/generate'       => [GenerateController::class, 'productAction', ['POST']],
         '/api/order-create'   => [OrderController::class, 'createAction', ['POST']],
         '/api/order-complete' => [OrderController::class, 'completeAction', ['PUT']],
@@ -40,6 +41,15 @@ return [
                 ],
             ],
         ],
-        OrderService::class => []
+        ProductService::class => [
+            'arguments' => [
+                new Reference(DataManager::class)
+            ]
+        ],
+        OrderService::class => [
+            'arguments' => [
+                new Reference(DataManager::class)
+            ]
+        ]
     ],
 ];

@@ -2,23 +2,8 @@
 
 namespace App\Repository;
 
-use App\Entity\Order;
+use Doctrine\ORM\EntityRepository;
 
-class OrderRepository
+class OrderRepository extends EntityRepository
 {
-    /**
-     * @param array $orderData
-     */
-    public function createOrder(array $orderData)
-    {
-
-    }
-
-    /**
-     * @param Order $order
-     */
-    public function completeOrder(Order $order)
-    {
-
-    }
 }

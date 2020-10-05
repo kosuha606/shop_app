@@ -3,14 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use Doctrine\ORM\EntityRepository;
 
-class ProductRepository
+class ProductRepository extends EntityRepository
 {
-    /**
-     * @return Product[]
-     */
-    public function list()
-    {
-
-    }
 }

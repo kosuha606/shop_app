@@ -1,6 +1,9 @@
 <?php
 
+use App\Core\AbstractController;
+
 /** @var string $content */
+/** @var AbstractController $this */
 
 $styles = file_get_contents(__DIR__.'/../../public/css/style.css');
 ?>
@@ -18,10 +21,16 @@ $styles = file_get_contents(__DIR__.'/../../public/css/style.css');
 </head>
 <body>
     <div class="container" id="app" v-cloak>
+        <div class="request" v-if="isRequest">
+            <em>Идет загрузка...</em>
+        </div>
         <?= $content ?>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+    <script>
+        <?php foreach($this->jsVars as $name => $var) { ?>
+        var <?= $name ?> = <?= json_encode($var, JSON_UNESCAPED_UNICODE) ?>;
+        <?php } ?>
+    </script>
     <script src="/js/dist/app.bundle.js"></script>
 </body>
 </html>

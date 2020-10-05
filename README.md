@@ -7,3 +7,6 @@
 * Чтобы инициализировать схему БД 
     * ./bin/site - войти в docker php.
     * vendor/bin/doctrine orm:schema-tool:create - запустить команду генерации таблиц.
+    
+### Примеры работы
+

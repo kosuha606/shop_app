@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ErrorController extends AbstractController
 {

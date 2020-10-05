@@ -3,11 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Core\AbstractController;
-use App\Core\DataManager;
-use App\Entity\Product;
 use App\Service\ProductService;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 
 class GenerateController extends AbstractController
 {

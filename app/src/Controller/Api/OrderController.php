@@ -3,13 +3,8 @@
 namespace App\Controller\Api;
 
 use App\Core\AbstractController;
-use App\Core\DataManager;
-use App\Entity\ProductOrder;
-use App\Entity\Product;
 use App\Entity\User;
 use App\Service\OrderService;
-use Doctrine\ORM\EntityManagerInterface;
-use GuzzleHttp\Client;
 
 class OrderController extends AbstractController
 {

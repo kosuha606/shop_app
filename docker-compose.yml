@@ -1,0 +1,47 @@
+version: '2'
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+      args:
+        UID: $UID
+        GUID: $GUID
+    links:
+      - php
+    ports:
+      - $PORT:80
+    volumes_from:
+      - php
+    volumes:
+      - "./volumes/logs/nginx:/var/log/nginx"
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+      args:
+        UID: $UID
+        GUID: $GUID
+    expose:
+      - "9000"
+    volumes:
+      - "./app:/var/www/site"
+    environment:
+      # ifconfig | grep 'inet 192'| awk '{ print $2}'
+      # XDEBUG_CONFIG: "remote_host=192.168.122.1 remote_enable=1 remote_port=9001 remote_connect_back=0 profiler_enable=0 remote_autostart=1"
+      PHP_IDE_CONFIG: "serverName=docker"
+    dns: 8.8.8.8
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASS
+      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASS
+    volumes_from:
+      - php
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+      - ./docker/mysql:/etc/mysql/conf.d

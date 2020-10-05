@@ -1,0 +1,15 @@
+{
+    "name": "root/site",
+    "require": {
+        "guzzlehttp/guzzle": "^7.1",
+        "doctrine/orm": "^2.7",
+        "symfony/dependency-injection": "^5.1",
+        "symfony/routing": "^5.1",
+        "symfony/http-kernel": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "App\\": "src"
+        }
+    }
+}

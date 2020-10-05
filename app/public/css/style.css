@@ -1,0 +1,35 @@
+
+* {
+    outline: none;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+body {
+    background: #eee;
+    font-family: sans-serif;
+}
+
+.btn {
+    background: #187fff;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-row {
+    margin-bottom: 5px;
+}
+
+.container {
+    background: #fff;
+    max-width: 800px;
+    border: solid 1px #ccc;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* css */
